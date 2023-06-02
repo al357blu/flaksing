@@ -26,7 +26,7 @@ pipeline {
 
     stage('Docker push') {
       steps {
-        sh 'docker push al357blu flask_app'
+        sh 'docker push al357blu/flask_app'
       }
     }
 
