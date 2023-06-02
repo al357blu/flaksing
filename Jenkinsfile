@@ -20,7 +20,7 @@ pipeline {
 
     stage('Docker login') {
       steps {
-        sh 'docker login -u al357blu -p dckr_pat_Tj-8VqT3Co91GwjULuz0xhvsOac'
+        sh 'docker login -u al357blu -p dckr_pat_iDuLAIG6KXekxbSW6A8N7Fo0SRg'
       }
     }
 
