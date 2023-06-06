@@ -28,7 +28,7 @@ pipeline {
       }
     }
 
-     stage('Deployment Stage') {
+    stage('Deployment Stage') {
       steps {
         script {
           docker.withRegistry('', registryCredentials) {
@@ -37,7 +37,7 @@ pipeline {
         } 
       }
    
-      stage('Kubernetes') {
+    stage('Kubernetes') {
        steps {
         withCredentials([aws(accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'AWS', secretKeyVariable: "AWS_SECRET_ACCESS_KEY")]) {
           sh "aws eks --region us-east-1 update-kubeconfig --name ${cluster_name}"
