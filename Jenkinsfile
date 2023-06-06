@@ -39,17 +39,17 @@ pipeline {
      stage('Kubernetes') {
       steps {
         withCredentials([aws(accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'AWS', secretKeyVariable: "AWS_SECRET_ACCESS_KEY")]) {
-          sh "aws eks --region us-east-1 update-kubeconfig --name $(cluster_name)"
+          sh "aws eks --region us-east-1 update-kubeconfig --name ${cluster_name}"
           script {
             try {
-              sh "kubectl create namespace $(namespace)"
+              sh "kubectl create namespace $"{namespace}"
             }
             catch (Exception e) {
               echo "Error / namespace already created"
             }
           }
-          sh "kubectl apply -f ./deployment.yaml -n $(namespace)"
-          sh "kubectl -n $(namespace) rollout restart deployment flaskcontainer"
+          sh "kubectl apply -f ./deployment.yaml -n ${namespace}"
+          sh "kubectl -n ${namespace} rollout restart deployment flaskcontainer"
         }
       }
     }
