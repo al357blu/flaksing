@@ -37,8 +37,8 @@ pipeline {
         } 
       }
    
-        stage('Kubernetes') {
-      steps {
+      stage('Kubernetes') {
+       steps {
         withCredentials([aws(accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'AWS', secretKeyVariable: "AWS_SECRET_ACCESS_KEY")]) {
           sh "aws eks --region us-east-1 update-kubeconfig --name ${cluster_name}"
           script {
