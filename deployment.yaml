@@ -1,14 +1,14 @@
 apiVersion: apps/v1 
 kind: Deployment 
 metadata: 
-  name:  al357blu_flaskcontainer 
+  name:  al357bluflask 
   namespace: al357blu 
   labels: 
-    app:  al357blu_flaskcontainer 
+    app:  al357bluflask 
 spec: 
   selector: 
     matchLabels: 
-      app: al357bu_flaskcontainer 
+      app: al357bluflask 
   replicas: 1 
   strategy: 
     rollingUpdate: 
@@ -18,10 +18,10 @@ spec:
   template: 
     metadata: 
       labels: 
-        app:  al357blu_flaskcontainer 
+        app:  al357bluflask 
     spec: 
       containers: 
-      - name:  al357blu_flaskcontainer 
+      - name:  al357bluflask 
         image:  al357blu/flask_app 
         resources: 
           requests: 
@@ -32,7 +32,7 @@ spec:
             memory: 100Mi 
         ports: 
         - containerPort:  5000 
-          name:  al357blu_flaskcontainer 
+          name:  al357bluflask 
         imagePullPolicy: Always 
       restartPolicy: Always 
  
@@ -40,18 +40,18 @@ spec:
 apiVersion: v1 
 kind: Service 
 metadata: 
-  name: al357blu_flaskcontainer 
+  name: al357bluflask 
   namespace: al357blu 
 spec: 
   selector: 
-    app: al357blu_flaskcontainer 
+    app: al357bluflask
   type: LoadBalancer 
   sessionAffinity: None 
   sessionAffinityConfig: 
     clientIP: 
       timeoutSeconds: 10800 
   ports: 
-  - name: al357blu_flaskcontainer 
+  - name: al357bluflask
     protocol: TCP 
     port: 80 
     targetPort: 5000 
