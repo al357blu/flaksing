@@ -1,0 +1,6 @@
+[
+    {
+        "name": "abrown-docker-container",
+        "imageUri": "public.ecr.aws/q9r3s5p8/<abrownflask>:latest"
+    }
+]
